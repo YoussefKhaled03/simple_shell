@@ -24,10 +24,16 @@ int main(void)
 		args = fill(command);
 		if (check(args[0]))
 			continue;
+		path = location(args[0]);
+		if (path == NULL)
+		{
+			perror("Not found");
+			free_grid(args);
+			continue;
+		}
 		id = fork();
 		if (id == 0)
 		{
-			path = location(args[0]);
 			execve(path, args, environ);
 			free(path);
 			perror("execve");
