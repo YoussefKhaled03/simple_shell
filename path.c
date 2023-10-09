@@ -54,15 +54,16 @@ char *location(char *command)
  * * Return: size of @s
  */
 
-int _strcmp(char *s1, char *s2)
+int _strncmp(char *s1, char *s2, size_t n)
 {
-	for (; (*s1 != '\0' && *s2 != '\0') && (*s1 == *s2); s1++, s2++)
-		;
-	if (*s1 == *s2)
+	int i;
+
+	for (i = 0; i < n; i++)
 	{
-		return (0);
+		if (s1[i] != '\0' || s2[i] != '\0' ||s1[i] != s2[i])
+		return (s1[i] - s2[i]);
 	}
-	return (*s1 - *s2);
+	return (0);
 }
 /**
  * _getenv- function that return the path
@@ -77,7 +78,7 @@ char *_getenv(char *varname)
 	for (env = environ; *env != NULL; env++)
 	{
 		entry = *env;
-		if (_strcmp(entry, varname) == 0 && entry[_strlen(varname)] == '=')
+		if (_strncmp(entry, varname,_strlen(varname)) == 0 && entry[_strlen(varname)] == '=')
 		{
 			return (entry + _strlen(varname) + 1);
 		}

@@ -23,11 +23,9 @@ int main(void)
 		if (command[_strlen(command) - 1] == '\n')
 			command[_strlen(command) - 1] = '\0';
 		args = fill(command);
-		// if (_check(args, status))
-		// 	continue;
+		 if (_check(args, status))
+		 	continue;
 		path = location(args[0]);
-		_putchar('h');
-		printf("%s\n",path);
 		if (path == NULL)
 		{
 			perror("Not found");
@@ -47,7 +45,7 @@ int main(void)
 		else
 		{
 			waitpid(id, &status, 0);
-			//status = WEXITSTATUS(status);
+			status = WEXITSTATUS(status);
 			free_grid(args);
 		}
 	}

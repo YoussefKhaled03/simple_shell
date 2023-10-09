@@ -27,4 +27,5 @@ char **fill(char *command);
 void free_grid(char **grid);
 int _check(char **args, int status);
 void print_environ(char **environ);
+int _strncmp(char *str1, char *str2, size_t n);
 #endif
