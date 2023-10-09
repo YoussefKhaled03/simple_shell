@@ -3,16 +3,17 @@
 /**
  *free_grid- entry point
  *@grid :sagoda
- * @height: saged
  * * Return: size of @s
  */
 
-void free_grid(int **grid, int height)
+void free_grid(int **grid)
 {
-	int i;
-
-	for (i = 0; i < height ; i++)
+	int i = 0;
+	while (grid[i])
+	{
 		free(grid[i]);
+		i++;
+	}
 	free(grid);
 }
 /**

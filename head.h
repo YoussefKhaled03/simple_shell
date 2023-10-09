@@ -26,5 +26,5 @@ int _strcmp(char *s1, char *s2);
 char *_getenv(const char* varname);
 char *location(char *command);
 char **fill(char *command);
-void free_grid(int **grid, int height);
+void free_grid(int **grid);
 #endif
