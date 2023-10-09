@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	char command[50000],  **args = NULL, *path = NULL;
+	char command[1024],  **args = NULL, *path = NULL;
 	int status = 0;
 	pid_t id;
 
@@ -16,22 +16,26 @@ int main(void)
 	{
 		_putstring("$ ");
 		fflush(stdin);
-		if (fgets(command, sizeof(char *), stdin) == NULL)
+		if (fgets(command, sizeof(command), stdin) == NULL)
 		{
 			break;
 		}
 		if (command[_strlen(command) - 1] == '\n')
 			command[_strlen(command) - 1] = '\0';
 		args = fill(command);
-		if (_check(args, status))
-			continue;
+		// if (_check(args, status))
+		// 	continue;
 		path = location(args[0]);
+		_putchar('h');
+		printf("%s\n",path);
 		if (path == NULL)
 		{
 			perror("Not found");
 			free_grid(args);
 			continue;
 		}
+		free(args[0]);
+		args[0]= path;
 		id = fork();
 		if (id == 0)
 		{
@@ -43,7 +47,7 @@ int main(void)
 		else
 		{
 			waitpid(id, &status, 0);
-			status = WEXITSTATUS(status);
+			//status = WEXITSTATUS(status);
 			free_grid(args);
 		}
 	}
