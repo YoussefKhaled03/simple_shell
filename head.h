@@ -27,6 +27,4 @@ char *_getenv(const char *varname);
 char *location(char *command);
 char **fill(char *command);
 void free_grid(int **grid, int height);
-void print_environ(char **environ);
-int _check(char **args, int status);
 #endif
