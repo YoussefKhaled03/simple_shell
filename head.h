@@ -12,19 +12,19 @@
 #include <errno.h>
 #include <linux/limits.h>
 extern char **environ;
-unsigned int i = 0;
-pid_t status;
 int _strlen(char *s);
 char *_strdup(char *str);
 int _putstring(char *s);
 int _putchar(char c);
 char *_strcat(char *dest, char *src);
-char *_strncpy(char *dest, char *src, int n);
+char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int _atoi(char *s);
 int _strcmp(char *s1, char *s2);
-char *_getenv(const char* varname);
+char *_getenv(char* varname);
 char *location(char *command);
 char **fill(char *command);
-void free_grid(int **grid);
+void free_grid(char **grid);
+int _check(char **args, int status);
+void print_environ(char **environ);
 #endif

@@ -69,7 +69,7 @@ int _strcmp(char *s1, char *s2)
  * @varname: PATH
  * Return: the path
  */
-char *_getenv(const char *varname)
+char *_getenv(char *varname)
 {
 	char **env;
 	char *entry;
@@ -77,8 +77,7 @@ char *_getenv(const char *varname)
 	for (env = environ; *env != NULL; env++)
 	{
 		entry = *env;
-		if (_strncmp(entry, varname, _strlen(varname)) == 0
-				&& entry[_strlen(varname)] == '=')
+		if (_strcmp(entry, varname) == 0 && entry[_strlen(varname)] == '=')
 		{
 			return (entry + _strlen(varname) + 1);
 		}

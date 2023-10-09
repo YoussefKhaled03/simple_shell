@@ -6,7 +6,7 @@
  * * Return: size of @s
  */
 
-void free_grid(int **grid)
+void free_grid(char **grid)
 {
 	int i = 0;
 	while (grid[i])
@@ -23,6 +23,7 @@ void free_grid(int **grid)
 */
 char **fill(char *command)
 {
+	int i = 0;
 	char *s = NULL;
 	char **arr = malloc(sizeof(char *) * 1024);
 
