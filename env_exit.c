@@ -13,6 +13,7 @@ void print_environ(char **environ)
 	while (environ[i])
 	{
 		_putstring(environ[i]);
+		_putchar('\n');
 		i++;
 	}
 }
@@ -23,14 +24,18 @@ void print_environ(char **environ)
  * @status: saged
  * Return: 0
 */
-int _check(char **args, int status)
+int _check(char *arg, int status)
 {
-	if (args[0] == "env")
+	char *ev = "env";
+	char *ex = "exit";
+
+	if (arg == ev)
 		{
 			print_environ(environ);
+			printf("looooooooooooooool");
 			return(1);
 		}
-	else if(args[0] == "exit")
+	else if(arg == ex)
 		{
 			free_grid(args);
 			exit(status);

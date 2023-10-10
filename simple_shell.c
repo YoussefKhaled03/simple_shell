@@ -8,7 +8,8 @@
 
 int main(void)
 {
-	char command[1024],  **args = NULL, *path = NULL;
+	char *command;
+      	//char **args = NULL, *path = NULL;
 	int status = 0;
 	pid_t id;
 
@@ -20,11 +21,18 @@ int main(void)
 		{
 			break;
 		}
+		if (_check(command, status))
+			continue;
 		if (command[_strlen(command) - 1] == '\n')
 			command[_strlen(command) - 1] = '\0';
+		if (_check(command, status))
+			continue;
 		args = fill(command);
-		 if (_check(args, status))
-		 	continue;
+		printf ("%s",args[0]);
+		if(command=="exit")
+			printf("saaaaaaaaaged");
+		//if (_check(args, status))
+		//	continue;
 		path = location(args[0]);
 		if (path == NULL)
 		{
