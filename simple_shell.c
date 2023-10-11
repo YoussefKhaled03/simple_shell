@@ -21,18 +21,12 @@ int main(void)
 		{
 			break;
 		}
-		if (_check(command, status))
-			continue;
 		if (command[_strlen(command) - 1] == '\n')
 			command[_strlen(command) - 1] = '\0';
-		if (_check(command, status))
-			continue;
+		                printf("%d", _strlen(command));
 		args = fill(command);
-		printf ("%s",args[0]);
-		if(command=="exit")
-			printf("saaaaaaaaaged");
-		//if (_check(args, status))
-		//	continue;
+		if (_check(args[0], status))
+			continue;
 		path = location(args[0]);
 		if (path == NULL)
 		{
