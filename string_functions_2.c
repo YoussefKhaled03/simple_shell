@@ -33,7 +33,7 @@ int _putstring(char *s)
 	int i;
 
 	if (!s)
-		return(0);
+		return (0);
 	for (i = 0; s[i]; i++)
 		_putchar(s[i]);
 	return (i);
