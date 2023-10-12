@@ -9,14 +9,15 @@
 char *_strtok(char *str, char delim)
 {
 	static char *cursor = NULL;
-	char *answer = NULL;
+	char *answer;
 	int i = 0;
 	
 	if (str  != NULL)
 		cursor = str;
 	if (cursor == NULL)
 		return NULL;
-	while (str[i] != '\0')
+	answer = malloc(_strlen(cursor)+1);
+	while (cursor[i] != '\0')
 	{
 		if (cursor[i] != delim)
 			answer[i] = cursor[i];

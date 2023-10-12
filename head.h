@@ -30,5 +30,5 @@ int _check(char *arg, int status);
  int compare_string(char *s1 , char *s2);
 void print_environ(char **environ);
 int _strncmp(char *str1, char *str2, size_t n);
-char *_strtok(char *str, char deil);
+char *_strtok(char *str, char delim);
 #endif
