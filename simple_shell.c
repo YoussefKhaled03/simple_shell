@@ -23,7 +23,6 @@ int main(void)
 		}
 		if (command[_strlen(command) - 1] == '\n')
 			command[_strlen(command) - 1] = '\0';
-		                printf("%d", _strlen(command));
 		args = fill(command);
 		if (_check(args[0], status))
 			continue;

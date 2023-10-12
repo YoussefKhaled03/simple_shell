@@ -25,13 +25,14 @@ char **fill(char *command)
 {
 	int i = 0;
 	char *s = NULL;
+	char dil[] = " ;";
 	char **arr = malloc(sizeof(char *) * 1024);
 
-	s = strtok(command, " ");
+	s = strtok(command, dil);
 	arr[0] = malloc(sizeof(char) * _strlen(s) + 1);
 	_strcpy(arr[0], s);
 	i++;
-	while ((s = strtok(NULL, " ")))
+	while ((s = strtok(NULL, dil)))
 	{
 		arr[i] = malloc(sizeof(char) * _strlen(s) + 1);
 		_strcpy(arr[i], s);
