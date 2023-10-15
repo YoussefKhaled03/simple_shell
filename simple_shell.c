@@ -8,8 +8,8 @@
 
 int main(void)
 {
-	char *command;
-	char **args, *path;
+	char command [1024];
+	char **args = NULL, *path = NULL;
 	int status = 0;
 	pid_t id;
 	while (1)
@@ -23,10 +23,12 @@ int main(void)
 		if (command[_strlen(command) - 1] == '\n')
 			command[_strlen(command) - 1] = '\0';
 		args = fill(command);
-		free(command);
+		//free(command);
 		if (_check(args, status))
 			continue;
+		_putchar('h');
 		path = location(args[0]);
+		_putchar('h');
 		if (path == NULL)
 		{
 			perror("Not found");
