@@ -9,28 +9,22 @@
 char *_strtok(char *str, char delim)
 {
 	static char *cursor = NULL;
-	char *answer;
+	char *start;
 	int i = 0;
 	
 	if (str  != NULL)
 		cursor = str;
-	if (cursor == NULL)
-		return NULL;
-	answer = malloc(_strlen(cursor)+1);
-	while (cursor[i] != '\0')
-	{
-		if (cursor[i] != delim)
-			answer[i] = cursor[i];
-		else
-		{
-			answer[i] = '\0';
-			cursor = cursor + i + 1;
-			return (answer);
-		}
-		i++;
-	}
-	answer[i] = '\0';
-	cursor = NULL;
-	return (answer);	
+	if (cursor == NULL || *cursor == '\0')
+		return (NULL);
+	while (*cursor == delim)
+		cursor++;
+	start = cursor;
+	while (*cursor != '\0' && *cursor != delim)
+		cursor++;
+	if (*cursor == '\0')
+		return (start);
+	*cursor = '\0';
+	cursor++;
+	return (start);	
 }
 
