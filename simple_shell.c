@@ -52,5 +52,6 @@ int main(void)
 			free_grid(args);
 		}
 	}
+	free(args);
 	return (status);
 }
