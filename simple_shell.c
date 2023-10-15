@@ -25,7 +25,10 @@ int main(void)
 		args = fill(command);
 		//free(command);
 		if (_check(args, status))
+		{
+			free_grid(args);
 			continue;
+		}
 		_putchar('h');
 		path = location(args[0]);
 		_putchar('h');
@@ -52,6 +55,6 @@ int main(void)
 			free_grid(args);
 		}
 	}
-	free(args);
+	free_grid(args);
 	return (status);
 }
