@@ -24,19 +24,18 @@ void print_environ(char **environ)
  * @status: saged
  * Return: 0
 */
-int _check(char *arg, int status)
+int _check(char **arg, int status)
 {
 	char *s1 = "env";
 	char *s2 = "exit";
-	if (compare_string(s1,arg))
+	if (compare_string(s1,arg[0]))
 		{
 			print_environ(environ);
-			printf("looooooooooooooool");
 			return(1);
 		}
-	else if(compare_string(s2,arg))
+	else if(compare_string(s2,arg[0]))
 		{
-			free_grid(args);
+			free_grid(arg);
 			exit(status);
 		}
 	else

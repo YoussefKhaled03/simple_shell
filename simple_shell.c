@@ -9,10 +9,9 @@
 int main(void)
 {
 	char *command;
-      	//char **args = NULL, *path = NULL;
+	char **args, *path;
 	int status = 0;
 	pid_t id;
-
 	while (1)
 	{
 		_putstring("$ ");
@@ -24,7 +23,8 @@ int main(void)
 		if (command[_strlen(command) - 1] == '\n')
 			command[_strlen(command) - 1] = '\0';
 		args = fill(command);
-		if (_check(args[0], status))
+		free(command);
+		if (_check(args, status))
 			continue;
 		path = location(args[0]);
 		if (path == NULL)
