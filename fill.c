@@ -1,7 +1,7 @@
 #include "head.h"
 
 /**
- *free_grid- entry point
+ *free_grid - entry point
  *@grid :sagoda
  * * Return: size of @s
  */
@@ -9,6 +9,7 @@
 void free_grid(char **grid)
 {
 	int i = 0;
+
 	while (grid[i])
 	{
 		free(grid[i]);

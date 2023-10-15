@@ -46,12 +46,10 @@ char *location(char *command)
 	return (NULL);
 }
 /**
- *_strcmp- entry point
- *
+ * _strcmp - entry point
  * @s1: saged
- *@s2:sagoda
- *
- * * Return: size of @s
+ * @s2:sagoda
+ * Return: size of s
  */
 
 int _strncmp(char *s1, char *s2, size_t n)
@@ -60,13 +58,13 @@ int _strncmp(char *s1, char *s2, size_t n)
 
 	for (i = 0; i < n; i++)
 	{
-		if (s1[i] != '\0' || s2[i] != '\0' ||s1[i] != s2[i])
+		if (s1[i] != '\0' || s2[i] != '\0' || s1[i] != s2[i])
 		return (s1[i] - s2[i]);
 	}
 	return (0);
 }
 /**
- * _getenv- function that return the path
+ * _getenv - function that return the path
  * @varname: PATH
  * Return: the path
  */
@@ -78,7 +76,7 @@ char *_getenv(char *varname)
 	for (env = environ; *env != NULL; env++)
 	{
 		entry = *env;
-		if (_strncmp(entry, varname,_strlen(varname)) == 0 && entry[_strlen(varname)] == '=')
+		if (_strncmp(entry, varname, _strlen(varname)) == 0 && entry[_strlen(varname)] == '=')
 		{
 			return (entry + _strlen(varname) + 1);
 		}
