@@ -26,6 +26,7 @@ char *location(char *command);
 char **fill(char *command);
 void free_grid(char **grid);
 int _check(char **arg, int status);
+int _fork(int status, char *path, char **args);
  int compare_string(char *s1 , char *s2);
 void print_environ(char **environ);
 int _strncmp(char *str1, char *str2, size_t n);

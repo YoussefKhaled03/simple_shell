@@ -56,7 +56,7 @@ char *location(char *command)
 
 int _strncmp(char *s1, char *s2, size_t n)
 {
-	int i;
+	size_t  i;
 
 	for (i = 0; i < n; i++)
 	{

@@ -10,7 +10,6 @@ char *_strtok(char *str, char delim)
 {
 	static char *cursor = NULL;
 	char *start;
-	int i = 0;
 	
 	if (str  != NULL)
 		cursor = str;

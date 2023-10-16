@@ -11,7 +11,6 @@ int main(void)
 	char command [1024];
 	char **args = NULL, *path = NULL;
 	int status = 0;
-	pid_t id;
 	while (1)
 	{
 		_putstring("$ ");
@@ -22,16 +21,17 @@ int main(void)
 		}
 		if (command[_strlen(command) - 1] == '\n')
 			command[_strlen(command) - 1] = '\0';
+		if (_strlen(command)== 0)
+		{
+				continue;
+		}
 		args = fill(command);
-		//free(command);
 		if (_check(args, status))
 		{
 			free_grid(args);
 			continue;
 		}
-		_putchar('h');
 		path = location(args[0]);
-		_putchar('h');
 		if (path == NULL)
 		{
 			perror("Not found");
@@ -40,20 +40,7 @@ int main(void)
 		}
 		free(args[0]);
 		args[0]= path;
-		id = fork();
-		if (id == 0)
-		{
-			execve(path, args, environ);
-			free(path);
-			perror("execve");
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			waitpid(id, &status, 0);
-			status = WEXITSTATUS(status);
-			free_grid(args);
-		}
+		status = _fork(status,path,args);
 	}
 	free_grid(args);
 	return (status);
