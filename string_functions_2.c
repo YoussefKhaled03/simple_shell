@@ -49,7 +49,7 @@ int _putstring(char *s)
 char *_strdup(char *str)
 {
 	unsigned int i = 0, j = 0;
-	char *c;
+	char *c = NULL;
 
 	if (str == NULL)
 		return (NULL);
@@ -57,11 +57,10 @@ char *_strdup(char *str)
 	{
 		i++;
 	}
-	c = malloc((i + 1) * sizeof(char));
+	c = malloc(i+1);
 	if (c == NULL)
 		return (NULL);
-	for (; j < i ; j++)
-		c[j] = str[j];
+	_strcpy(c,str);
 	return (c);
 }
 /**

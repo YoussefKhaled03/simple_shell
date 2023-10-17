@@ -9,7 +9,7 @@
 char *_strtok(char *str, char delim)
 {
 	static char *cursor = NULL;
-	char *start;
+	char *start = NULL;
 	
 	if (str  != NULL)
 		cursor = str;

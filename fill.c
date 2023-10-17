@@ -9,6 +9,9 @@
 void free_grid(char **grid)
 {
 	int i = 0;
+
+	if (!grid)
+		return;
 	while (grid[i])
 	{
 		free(grid[i]);
@@ -29,12 +32,12 @@ char **fill(char *command)
 	char **arr = malloc(sizeof(char *) * 1024);
 
 	s = _strtok(command, dil);
-	arr[0] = malloc(sizeof(char) * _strlen(s) + 1);
+	arr[0] = malloc(sizeof(char) * _strlen(s) + 5);
 	_strcpy(arr[0], s);
 	i++;
 	while ((s = _strtok(NULL, dil)))
 	{
-		arr[i] = malloc(sizeof(char) * _strlen(s) + 1);
+		arr[i] = malloc(sizeof(char) * _strlen(s) + 5);
 		_strcpy(arr[i], s);
 		i++;
 	}

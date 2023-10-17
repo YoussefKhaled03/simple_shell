@@ -79,9 +79,9 @@ int _atoi(char *s)
 
 int _strlen(char *s)
 {
-	int p;
+	int p = 0;
 
-	for (p = 0; *s != '\0'; s++)
+	for (p; *s != '\0'; s++)
 		p++;
 	return (p);
 }

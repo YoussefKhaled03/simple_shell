@@ -7,41 +7,45 @@
  */
 char *location(char *command)
 {
-	char *path, *path_copy, *path_token, *file_path;
+	char *path = _getenv("PATH"), *path_copy = NULL, *path_token = NULL, *file_path = NULL;
 	unsigned int size_one, size_two;
 	struct stat buffer;
 
-	path = _getenv("PATH");
-	if (path)
-	{
-		path_copy = _strdup(path);
-		size_one = _strlen(command);
-		path_token = _strtok(path_copy, ':');
-		while (path_token != NULL)
-		{
-			size_two = _strlen(path_token);
-			file_path = malloc(size_one + size_two + 2);
-			_strcpy(file_path, path_token);
-			_strcat(file_path, "/");
-			_strcat(file_path, command);
-			_strcat(file_path, "\0");
-			if (stat(file_path, &buffer) == 0)
-			{
-				free(path_copy);
-				return (file_path);
-			}
-			else
-			{
-				free(file_path);
-				path_token = _strtok(NULL, ':');
-			}
-		}
-		free(path_copy);
-		if (stat(command, &buffer) == 0)
-		{
-			return (command);
-		}
+	if (path == NULL)
 		return (NULL);
+	path_copy = _strdup(path);
+	if (path_copy == NULL)
+		return (NULL);
+	path_token = _strtok(path_copy, ':');
+	while (path_token != NULL)
+	{
+		size_one = _strlen(command);
+		size_two = _strlen(path_token);
+		file_path = malloc(size_one + size_two + 2);
+		if (file_path == NULL)
+		{
+		free(path_copy);
+		return (NULL);
+		}
+	_strcpy(file_path, path_token);
+	_strcat(file_path, "/");
+	_strcat(file_path, command);
+
+	if (stat(file_path, &buffer) == 0)
+	{
+		free(path_copy);
+		return (file_path);
+	}
+	else 
+	{
+		free(file_path);
+		path_token = _strtok(NULL, ':');
+	}
+	}
+	free(path_copy);
+	if (stat(command, &buffer) == 0)
+	{
+		return (_strdup(command));
 	}
 	return (NULL);
 }
@@ -73,7 +77,7 @@ int _strncmp(char *s1, char *s2, size_t n)
 char *_getenv(char *varname)
 {
 	char **env;
-	char *entry;
+	char *entry = NULL;
 
 	for (env = environ; *env != NULL; env++)
 	{
