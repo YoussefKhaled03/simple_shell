@@ -22,9 +22,10 @@ void print_environ(char **environ)
  * _check - check for env & exit
  * @arg: array of input
  * @status: saged
+ * @command: the command
  * Return: 0
 */
-int _check(char **arg, int status, char* command)
+int _check(char **arg, int status, char *command)
 {
 	char *s1 = "env";
 	char *s2 = "exit";
