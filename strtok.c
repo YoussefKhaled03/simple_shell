@@ -8,12 +8,12 @@
  */
 char *_strtok(char *str, char delim)
 {
-	static char *cursor = NULL;
+	static char *cursor;
 	char *start = NULL;
 
 	if (str  != NULL)
 		cursor = str;
-	if (cursor == NULL || *cursor == '\0')
+	if (!cursor || *cursor == '\0')
 		return (NULL);
 	while (*cursor == delim)
 		cursor++;

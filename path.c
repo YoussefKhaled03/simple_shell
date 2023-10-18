@@ -45,9 +45,7 @@ char *location(char *command)
 	}
 	free(path_copy);
 	if (stat(command, &buffer) == 0)
-	{
 		return (_strdup(command));
-	}
 	return (NULL);
 }
 /**

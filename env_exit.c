@@ -30,15 +30,15 @@ int _check(char **arg, int status)
 	char *s2 = "exit";
 
 	if (compare_string(s1, arg[0]))
-		{
-			print_environ(environ);
-			return (1);
-		}
+	{
+		print_environ(environ);
+		return (1);
+	}
 	else if (compare_string(s2, arg[0]))
-		{
-			free_grid(arg);
-			exit(status);
-		}
+	{
+		free_grid(arg);
+		exit(status);
+	}
 	else
 		return (0);
 }

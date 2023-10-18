@@ -48,7 +48,7 @@ int _putstring(char *s)
 
 char *_strdup(char *str)
 {
-	unsigned int i = 0, j = 0;
+	unsigned int i = 0;
 	char *c = NULL;
 
 	if (str == NULL)
