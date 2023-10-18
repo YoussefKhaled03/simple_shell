@@ -8,8 +8,7 @@
 
 int main(void)
 {
-	char command[500000];
-	char **args = NULL, *path = NULL, *erro = NULL;
+	char **args = NULL, *path = NULL, *command;
 	int status = 0;
 	int er = 0;
 	int a = isatty(STDIN_FILENO);
@@ -19,33 +18,52 @@ int main(void)
 		er++;
 		if (a)
 			_putstring("$ ");
-		if (fgets(command, sizeof(command), stdin) == NULL)
-			break;
+		command = malloc(5000000);
+		if (fgets(command, 5000000, stdin) == NULL)
+		{
+			free(command);
+				break;
+		}
 		if (command[_strlen(command) - 1] == '\n')
 			command[_strlen(command) - 1] = '\0';
 		if (_strlen(command) == 0)
-			continue;
-		args = fill(command);
-		if (_check(args, status))
 		{
-			free_grid(args);
+			free(command);
+			continue;
+		}
+		args = fill(command);
+		if (_check(args, status, command))
+		{
+			free_grid(args), free(command);
 			continue;
 		}
 		path = location(args[0]);
 		if (path == NULL)
 		{
-			erro = handle_int(er);
-			write(2, "./hsh: ", 7);
-			write(2, erro, _strlen(erro));
-			write(2, ": ", 2);
-			write(2, command,  _strlen(command));
-			write(2, ": not found\n", _strlen(": not found\n"));
+			errors(er, command);
 			free_grid(args);
-			free(erro);
 			continue;
 		}
-		free(args[0]), args[0] = path;
+		free(args[0]), args[0] = path, free(command);
 		status = _fork(status, path, args, er);
 	}
 	return (status);
+}
+/**
+ *errors - print errors
+ *@er: integer
+ *@command: the command
+ *Return: null
+ */
+void errors(int er, char *command)
+{
+	char *erro = handle_int(er);
+
+	write(2, "./hsh: ", 7);
+	write(2, erro, _strlen(erro));
+	write(2, ": ", 2);
+	write(2, command,  _strlen(command));
+	write(2, ": not found\n", _strlen(": not found\n"));
+	free(command);
+	free(erro);
 }

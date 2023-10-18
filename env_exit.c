@@ -24,7 +24,7 @@ void print_environ(char **environ)
  * @status: saged
  * Return: 0
 */
-int _check(char **arg, int status)
+int _check(char **arg, int status, char* command)
 {
 	char *s1 = "env";
 	char *s2 = "exit";
@@ -37,6 +37,7 @@ int _check(char **arg, int status)
 	else if (compare_string(s2, arg[0]))
 	{
 		free_grid(arg);
+		free(command);
 		exit(status);
 	}
 	else
