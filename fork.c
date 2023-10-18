@@ -3,12 +3,16 @@
 /**
  * _fork - function that handle fork
  * @status: status that will return
+ * @path: the path
+ * @args: the array of input
+ * @err: the error message
  * Return: status
 */
-int _fork (int status, char *path,  char **args, int err)
+int _fork(int status, char *path,  char **args, int err)
 {
 	char *in;
 	pid_t id = fork();
+
 	if (id == 0)
 	{
 		execve(path, args, environ);
@@ -38,7 +42,7 @@ int _fork (int status, char *path,  char **args, int err)
 */
 char *error(char *str, int n)
 {
-	return (_strcat(str,handle_int(n)));
+	return (_strcat(str, handle_int(n)));
 }
 /**
  * handle_int - function will convert int to string

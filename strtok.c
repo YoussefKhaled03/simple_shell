@@ -10,7 +10,7 @@ char *_strtok(char *str, char delim)
 {
 	static char *cursor = NULL;
 	char *start = NULL;
-	
+
 	if (str  != NULL)
 		cursor = str;
 	if (cursor == NULL || *cursor == '\0')
@@ -24,6 +24,6 @@ char *_strtok(char *str, char delim)
 		return (start);
 	*cursor = '\0';
 	cursor++;
-	return (start);	
+	return (start);
 }
 

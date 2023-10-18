@@ -8,10 +8,11 @@
 
 int main(void)
 {
-	char command [50000];
+	char command[50000];
 	char **args = NULL, *path = NULL;
 	int status = 0;
 	int er = 0;
+
 	while (1)
 	{
 		er++;
@@ -22,7 +23,7 @@ int main(void)
 		}
 		if (command[_strlen(command) - 1] == '\n')
 			command[_strlen(command) - 1] = '\0';
-		if (_strlen(command)== 0)
+		if (_strlen(command) == 0)
 		{
 			continue;
 		}
@@ -40,8 +41,8 @@ int main(void)
 			continue;
 		}
 		free(args[0]);
-		args[0]= path;
-		status = _fork(status,path,args,er);
+		args[0] = path;
+		status = _fork(status, path, args, er);
 	}
 	free_grid(args);
 	return (status);

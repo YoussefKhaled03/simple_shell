@@ -33,7 +33,7 @@ int _putstring(char *s)
 	int i;
 
 	if (!s)
-		return(0);
+		return (0);
 	for (i = 0; s[i]; i++)
 		_putchar(s[i]);
 	return (i);
@@ -57,10 +57,10 @@ char *_strdup(char *str)
 	{
 		i++;
 	}
-	c = malloc(i+1);
+	c = malloc(i + 1);
 	if (c == NULL)
 		return (NULL);
-	_strcpy(c,str);
+	_strcpy(c, str);
 	return (c);
 }
 /**
