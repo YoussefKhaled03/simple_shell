@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	char command[5000000];
+	char command[500000];
 	char **args = NULL, *path = NULL, *erro = NULL;
 	int status = 0;
 	int er = 0;
