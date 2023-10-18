@@ -29,7 +29,7 @@ char **fill(char *command)
 	int i = 0;
 	char *s = NULL;
 	char dil = ' ';
-	char **arr = malloc(sizeof(char *) * 1024);
+	char **arr = malloc(sizeof(char *) * 500000);
 
 	s = _strtok(command, dil);
 	arr[0] = malloc(sizeof(char) * _strlen(s) + 5);

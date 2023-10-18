@@ -22,7 +22,7 @@ char *location(char *command)
 	{
 		size_one = _strlen(command);
 		size_two = _strlen(path_token);
-		file_path = malloc(size_one + size_two + 2);
+		file_path = malloc(size_one + size_two + 8);
 		if (file_path == NULL)
 		{
 		free(path_copy);
