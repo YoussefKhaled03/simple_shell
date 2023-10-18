@@ -25,23 +25,23 @@ char *location(char *command)
 		file_path = malloc(size_one + size_two + 8);
 		if (file_path == NULL)
 		{
-		free(path_copy);
-		return (NULL);
+			free(path_copy);
+			return (NULL);
 		}
-	_strcpy(file_path, path_token);
-	_strcat(file_path, "/");
-	_strcat(file_path, command);
+		_strcpy(file_path, path_token);
+		_strcat(file_path, "/");
+		_strcat(file_path, command);
 
-	if (stat(file_path, &buffer) == 0)
-	{
-		free(path_copy);
-		return (file_path);
-	}
-	else
-	{
-		free(file_path);
-		path_token = _strtok(NULL, ':');
-	}
+		if (stat(file_path, &buffer) == 0)
+		{
+			free(path_copy);
+			return (file_path);
+		}
+		else
+		{
+			free(file_path);
+			path_token = _strtok(NULL, ':');
+		}
 	}
 	free(path_copy);
 	if (stat(command, &buffer) == 0)
