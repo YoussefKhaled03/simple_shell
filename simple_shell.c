@@ -12,11 +12,13 @@ int main(void)
 	char **args = NULL, *path = NULL, *erro = NULL;
 	int status = 0;
 	int er = 0;
+	int a = isatty(STDIN_FILENO);
 
 	while (1)
 	{
 		er++;
-		_putstring("$ ");
+		if (a)
+			_putstring("$ ");
 		if (fgets(command, sizeof(command), stdin) == NULL)
 			break;
 		if (command[_strlen(command) - 1] == '\n')
@@ -45,7 +47,6 @@ int main(void)
 		free(args[0]);
 		args[0] = path;
 		status = _fork(status, path, args, er);
-	}
-	free_grid(args);
+	}	
 	return (status);
 }

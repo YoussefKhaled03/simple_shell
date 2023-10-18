@@ -61,7 +61,7 @@ char *handle_int(int x)
 		i++;
 		x /= 10;
 	}
-	new = malloc(i);
+	new = malloc(i + 5);
 	i--;
 	while (i >= 0)
 	{
