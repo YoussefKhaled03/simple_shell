@@ -44,9 +44,8 @@ int main(void)
 			free(erro);
 			continue;
 		}
-		free(args[0]);
-		args[0] = path;
+		free(args[0]), args[0] = path;
 		status = _fork(status, path, args, er);
-	}	
+	}
 	return (status);
 }
